@@ -183,7 +183,7 @@ endmodule
 
 ### Question6：Alwayscase2
 
-优先级编码器是一个组合逻辑电路。它的功能是输入为一组bit，输出为1bit，表示输入第一次出现1‘b1的位置。比如，8位优先级编码器输入位8’b10010000，输出将会是3‘d4。设计一个4-bit'的优先级编码器，对于该问题，当输入没有1，输出为0。值得注意的是4-bit有16种可能的结果。
+优先级编码器是一个组合逻辑电路。它的功能是输入为一组bit，输出为1bit，表示输入第一次出现1‘b1的位置。比如，8位优先级编码器输入位8’b10010000，输出将会是3‘d4。设计一个4-bit的优先级编码器，对于该问题，当输入没有1，输出为0。值得注意的是4-bit有16种可能的结果。
 
 求解：
 
@@ -209,5 +209,34 @@ endmodule
 
 ### Question7：Alwayscasez
 
+使用casez设计一个8-bit的优先级编码器，对于该问题，当输入没有1，输出为0。
+
+casez的作用：它对具有值 z 的位设定为不关心。
+
+求解：
+
+```verilog
+module top_module (
+    input [7:0] in,
+    output reg [2:0] pos );
+    always@(*)begin
+        casez(in)
+            8'bzzzz_zzz1 : pos <= 4'd0;
+            8'bzzzz_zz10 : pos <= 4'd1;
+            8'bzzzz_z100 : pos <= 4'd2;
+            8'bzzzz_1000 : pos <= 4'd3;
+            8'bzzz1_0000 : pos <= 4'd4;
+            8'bzz10_0000 : pos <= 4'd5;
+            8'bz100_0000 : pos <= 4'd6;
+            8'b1000_0000 : pos <= 4'd7;
+            default : pos <= 4'd0;
+        endcase
+    end
+endmodule
+```
+
+![HDLBs-Solutions/Alwayscasez.png at main · opopjeff/HDLBs-Solutions (github.com)](https://github.com/opopjeff/HDLBs-Solutions/blob/main/pictures/Alwayscasez.png)
 
 
+
+### Question8 : Always nolatches
