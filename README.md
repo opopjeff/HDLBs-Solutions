@@ -10,5 +10,7 @@
 
 ​	分别使用assign语句和组合always模块设计一个AND门。（赋值语句和always模块功能相同，但是这是用来练习的。）
 
-​	![image-20221001155247739](C:\Users\CQG\AppData\Roaming\Typora\typora-user-images\image-20221001155247739.png)
+![HDLBs-Solutions/Alwaysblock1.png at main · opopjeff/HDLBs-Solutions (github.com)](https://github.com/opopjeff/HDLBs-Solutions/blob/main/pictures/Alwaysblock1.png)
+
+
 
