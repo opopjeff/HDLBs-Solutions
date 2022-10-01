@@ -4,8 +4,6 @@
 
 本文档是HDLBits练习题的求解方案。采用语言为Verilog HDL。
 
-[TOC]
-
 ## 问题合集
 
 ### Question1：Alwaysblock1
@@ -185,7 +183,29 @@ endmodule
 
 优先级编码器是一个组合逻辑电路。它的功能是输入为一组bit，输出为1bit，表示输入第一次出现1‘b1的位置。比如，8位优先级编码器输入位8’b10010000，输出将会是3‘d4。设计一个4-bit'的优先级编码器，对于该问题，当输入没有1，输出为0。值得注意的是4-bit有16种可能的结果。
 
+求解：
 
+```Verilog
+module top_module (
+    input [3:0] in,
+    output reg [1:0] pos  );
+    always@(*)begin
+        casex(in)
+            4'bxxx1 : pos <= 2'd0;
+            4'bxx10 : pos <= 2'd1;
+            4'bx100 : pos <= 2'd2;
+            4'b1000 : pos <= 2'd3;
+            default : pos <= 2'd0;
+        endcase
+    end
+endmodule
+```
+
+![HDLBs-Solutions/Alwayscase2.png at main · opopjeff/HDLBs-Solutions (github.com)](https://github.com/opopjeff/HDLBs-Solutions/blob/main/pictures/Alwayscase2.png)
+
+
+
+### Question7：Alwayscasez
 
 
 
