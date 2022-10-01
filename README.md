@@ -6,11 +6,76 @@
 
 ## 问题合集
 
-### question1：Alwaysblock1
+### Question1：Alwaysblock1
 
 ​	分别使用assign语句和组合always模块设计一个AND门。（赋值语句和always模块功能相同，但是这是用来练习的。）
 
 ![HDLBs-Solutions/Alwaysblock1.png at main · opopjeff/HDLBs-Solutions (github.com)](https://github.com/opopjeff/HDLBs-Solutions/blob/main/pictures/Alwaysblock1.png)
+
+
+
+### Question2：Alwaysblock2
+
+​		使用assign赋值语句、组合always模块和带时钟的always模块三种方法建立一个异或（XOR）门。带时钟的always模块会综合为与其他两个不同的电路：有一个触发器，因此输出延迟。
+
+![HDLBs-Solutions/Alwaysblock2.png at main · opopjeff/HDLBs-Solutions (github.com)](https://github.com/opopjeff/HDLBs-Solutions/blob/main/pictures/Alwaysblock2.png)
+
+​		代码运行结果如下：注意带时钟的always模块有一个周期的延迟。
+
+![HDLBs-Solutions/Alwaysblock2(2).png at main · opopjeff/HDLBs-Solutions (github.com)](https://github.com/opopjeff/HDLBs-Solutions/blob/main/pictures/Alwaysblock2(2).png)
+
+### Question3：Always if
+
+​		设计一个二选一双路选择器（输入是a和b）。当sel_b1和sel_b2都为1时，输出为b，其余情况下输出a。要求分别使用assign语句和always模块实现。
+
+| sel_b1 | sel_b2 | out_assing / out_always |
+| :----: | :----: | :---------------------: |
+|   0    |   0    |            a            |
+|   0    |   1    |            a            |
+|   1    |   0    |            a            |
+|   1    |   1    |            b            |
+
+代码运行结果如下：
+
+![HDLBs-Solutions/AlwaysIF.png at main · opopjeff/HDLBs-Solutions (github.com)](https://github.com/opopjeff/HDLBs-Solutions/blob/main/pictures/AlwaysIF.png)
+
+
+
+### Question4：Always if2
+
+​		接下来的代码包含一个行为错误，请修复这个Bug。
+
+```verilog
+always @(*) begin
+    if (cpu_overheated)
+       shut_off_computer = 1;
+end
+
+always @(*) begin
+    if (~arrived)
+       keep_driving = ~gas_tank_empty;
+end
+```
+
+​		if分支语句没有指明全部分支的结果，导致行为错误。为两个if分支添加else。代码运行结果如下所示。
+
+![HDLBs-Solutions/Alwaysif2.png at main · opopjeff/HDLBs-Solutions (github.com)](https://github.com/opopjeff/HDLBs-Solutions/blob/main/pictures/Alwaysif2.png)
+
+
+
+### Question5：Alwayscase
+
+​		如果有大量的分支情况使用case语句更加方便。在本练习中，要求设计一个6-1多路选通器。当sel介于0~5，选择相对应的数据输入。其他情况下，输出0。输入和输出数据都是4bit宽的。
+
+![HDLBs-Solutions/Alwayscase.png at main · opopjeff/HDLBs-Solutions (github.com)](https://github.com/opopjeff/HDLBs-Solutions/blob/main/pictures/Alwayscase.png)
+
+
+
+### Question6：Alwayscase2
+
+​		优先级编码器是一个组合逻辑电路。它的功能是输入为一组bit，输出为1bit，表示输入第一次出现1‘b1的位置。比如，8位优先级编码器输入位8’b10010000，输出将会是3‘d4。设计一个4-bit'的优先级编码器，对于该问题，当输入没有1，输出为0。值得注意的是4-bit有16种可能的结果。
+
+
 
 
 
