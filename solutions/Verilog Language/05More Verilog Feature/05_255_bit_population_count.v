@@ -5,16 +5,11 @@ module top_module(
     input [254:0] in,
     output [7:0] out );
 	
-	initial out <= 0;
-	
-	genvar i;
-	generate for(i = 0;i < 255 ; i = i + 1)
-		begin:V1
-			if(in[i])
-				assign out = out + 1;
-			else
-				assign out = out;
-		end
-	endgenerate
+	integer i;
+	always@(*)begin
+		out = 0;
+		for (i = 0 ; i < 255; i = i+1)
+			out = out + in[i];
+	end
 
 endmodule
